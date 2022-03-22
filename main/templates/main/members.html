@@ -1,0 +1,280 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset = "UTF-8">
+    <title>Cookies & Code</title>
+
+    <!-- Import stylesheet... -->
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+    <nav>
+      <ul class="navbar-ul">
+        <li class="navbar-li"><a href="/home"><strong>Home</strong></a></li>
+        <li class="navbar-li"><a href="/members"><strong>Members</strong></a></li>
+        <li class="navbar-li"><a href="/about"><strong>About</strong></a></li>
+        <li class="navbar-li"><a href="/practice"><strong>Practice</strong></a></li>
+        <li class="navbar-li"><a href="/gallery"><strong>Gallery</strong></a></li>
+        <li class="navbar-li"><a href="/recos"><strong>Recos!</strong></a></li>
+      </ul>
+    </nav>
+
+    <!-- Description -->
+    <div>
+        <table class = "description slow-grow">
+            <thead style="background: rgba(137, 207, 240, 1); ">
+              <tr>
+                  <th>Our Membership</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                  <td class = "description-cell">
+                    <p>
+                      Our membership is divided into two categories: general body and excecutive board.
+                      Our general body is 200+ members strong, and we encourage any Tulane student who has
+                      an interest in computer science to join. General body members receive emails about C&C
+                      events and are privy to new developments happening within the club.
+                    </p>
+                    <hr>
+                    <p>
+                      Our excecutive board is comprised of six officers who work together in organizing events.
+                      Anyone who's been an active general-body member for <strong><em>at least one semester</em></strong> is encouraged to
+                      apply to be an officer. Officers are also responsible for adding new dimensions to the club,
+                      such as this website.
+                    </p>
+                  </td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Member profiles -->
+    <div class = "member-grid">
+
+      <!-- First member... -->
+      <div class = "member first-member slow-grow">
+        <img class = "member-photo" src="{% static 'assets/img/jake.jpg' %}" alt="Jake photo">
+        <h2 class = "member-name">Jake Lehner</h2>
+        <h3 class = "member-role" >President</h3>
+
+        <footer class="member-socials"> <!-- Animate the logos to get larger when you hover over them!!! -->
+          <div class = "member-link">
+            <a href = "https://github.com/jakleh" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/github-icon.png' %}" alt="Github icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a href = "https://www.instagram.com/lehner_jake/" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/instagram-icon.jpg' %}" alt="Instagram icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a href = "https://www.linkedin.com/in/jakleh/" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/linkedin-icon.png' %}" alt="LinkedIn icon"></a>
+          </div>
+        </footer>
+
+      </div>
+
+      <!-- Second member... -->
+      <div class = "member second-member slow-grow">
+        <img class = "member-photo" src="{% static 'assets/img/caroline.jpeg' %}" alt="Caroline photo">
+        <h2 class = "member-name">Caroline Casella</h2>
+        <h3 class = "member-role">Content</h3>
+
+        <footer class="member-socials"> <!-- Animate the logos to get larger when you hover over them!!! -->
+          <div class = "member-link">
+            <a><img style = "filter: blur(2px);" class="member-icon" src="{% static 'assets/img/github-icon.png' %}" alt="Github icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a href = "https://www.instagram.com/carolinecasella/" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/instagram-icon.jpg' %}" alt="Instagram icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a href = "https://www.linkedin.com/in/caroline-casella/" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/linkedin-icon.png' %}" alt="LinkedIn icon"></a>
+          </div>
+
+        </footer>
+      </div>
+
+      <!-- Third member... -->
+      <div class = "member third-member slow-grow">
+        <img class = "member-photo" src="{% static 'assets/img/samuel.jpeg' %}" alt="Samuel photo">
+        <h2 class = "member-name">Samuel Kellum</h2>
+        <h3 class = "member-role">Copywriting</h3>
+
+        <footer class="member-socials"> <!-- Animate the logos to get larger when you hover over them!!! -->
+          <div class = "member-link">
+            <a href = "https://github.com/samuelkellum" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/github-icon.png' %}" alt="Github icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a href = "https://www.instagram.com/sxckellum/" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/instagram-icon.jpg' %}" alt="Instagram icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a href = "https://www.linkedin.com/in/samuelkellum/" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/linkedin-icon.png' %}" alt="LinkedIn icon"></a>
+          </div>
+        </footer>
+      </div>
+
+      <!-- Fourth member... -->
+      <div class = "member fourth-member slow-grow">
+        <img class = "member-photo" src="{% static 'assets/img/bennett.jpeg' %}" alt="Bennett photo">
+        <h2 class = "member-name">Bennett Khan</h2>
+        <h3 class = "member-role">Vice President</h3>
+
+        <footer class="member-socials"> <!-- Animate the logos to get larger when you hover over them!!! -->
+          <div class = "member-link">
+            <a href = "https://github.com/thegenghiskahn" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/github-icon.png' %}" alt="Github icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a href = "https://www.instagram.com/thegenghiskahn/" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/instagram-icon.jpg' %}" alt="Instagram icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a><img style = "filter: blur(2px);" class="member-icon" src="{% static 'assets/img/linkedin-icon.png' %}" alt="LinkedIn icon"></a>
+          </div>
+        </footer>
+      </div>
+
+      <!-- Fifth member... -->
+      <div class = "member fifth-member slow-grow">
+        <img class = "member-photo" src="{% static 'assets/img/bharat.jpg' %}" alt="Bharat photo">
+        <h2 class = "member-name">Bharat Solanky</h2>
+        <h3 class = "member-role">Treasurer</h3>
+
+        <footer class="member-socials"> <!-- Animate the logos to get larger when you hover over them!!! -->
+          <div class = "member-link">
+            <a href = "https://github.com/Bharatsolanky" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/github-icon.png' %}" alt="Github icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a href = "https://www.instagram.com/solankybharat/" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/instagram-icon.jpg' %}" alt="Instagram icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a><img style = "filter: blur(2px);" class="member-icon" src="{% static 'assets/img/linkedin-icon.png' %}" alt="LinkedIn icon"></a>
+          </div>
+        </footer>
+      </div>
+
+      <!-- Sixth member... -->
+      <div class = "member sixth-member slow-grow">
+        <img class = "member-photo" src="{% static 'assets/img/lauren.jpg' %}" alt="Lauren photo">
+        <h2 class = "member-name">Lauren Janko</h2>
+        <h3 class = "member-role">Outreach</h3>
+
+        <footer class="member-socials"> <!-- Animate the logos to get larger when you hover over them!!! -->
+          <div class = "member-link">
+            <a><img style = "filter: blur(2px);" class="member-icon" src="{% static 'assets/img/github-icon.png' %}" alt="Github icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a href = "https://www.instagram.com/laurenjanko/" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/instagram-icon.jpg' %}" alt="Instagram icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a><img style = "filter: blur(2px);" class="member-icon" src="{% static 'assets/img/linkedin-icon.png' %}" alt="LinkedIn icon"></a>
+          </div>
+        </footer>
+      </div>
+
+      <!-- Seventh member... -->
+      <div class = "member seventh-member slow-grow">
+        <img class = "member-photo" src="{% static 'assets/img/github-icon.png' %}" alt="Indigo photo">
+        <h2 class = "member-name">Indigo Emanuel</h2>
+        <h3 class = "member-role">E-Board Member</h3>
+
+        <footer class="member-socials"> <!-- Animate the logos to get larger when you hover over them!!! -->
+          <div class = "member-link">
+            <a><img style = "filter: blur(2px);" class="member-icon" src="{% static 'assets/img/github-icon.png' %}" alt="Github icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a><img style = "filter: blur(2px);" class="member-icon" src="{% static 'assets/img/instagram-icon.jpg' %}" alt="Instagram icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a><img style = "filter: blur(2px);" class="member-icon" src="{% static 'assets/img/linkedin-icon.png' %}" alt="LinkedIn icon"></a>
+          </div>
+        </footer>
+      </div>
+
+      <!-- Eighth member... -->
+      <div class = "member eighth-member slow-grow">
+        <img class = "member-photo" src="{% static 'assets/img/github-icon.png' %}" alt="Ananya photo">
+        <h2 class = "member-name">Ananya Anand</h2>
+        <h3 class = "member-role">E-Board Member</h3>
+
+        <footer class="member-socials"> <!-- Animate the logos to get larger when you hover over them!!! -->
+          <div class = "member-link">
+            <a><img style = "filter: blur(2px);" class="member-icon" src="{% static 'assets/img/github-icon.png' %}" alt="Github icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a><img style = "filter: blur(2px);" class="member-icon" src="{% static 'assets/img/instagram-icon.jpg' %}" alt="Instagram icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a><img style = "filter: blur(2px);" class="member-icon" src="{% static 'assets/img/linkedin-icon.png' %}" alt="LinkedIn icon"></a>
+          </div>
+        </footer>
+      </div>
+
+      <!-- Ninth member... -->
+      <div class = "member ninth-member slow-grow">
+        <img class = "member-photo" src="{% static 'assets/img/Christopher.jpeg' %}" alt="Christopher photo">
+        <h2 class = "member-name">Christopher Lewis</h2>
+        <h3 class = "member-role">E-Board Member</h3>
+
+        <footer class="member-socials"> <!-- Animate the logos to get larger when you hover over them!!! -->
+          <div class = "member-link">
+            <a href = "https://github.com/cml1322" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/github-icon.png' %}" alt="Github icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a><img style = "filter: blur(2px);" class="member-icon" src="{% static 'assets/img/instagram-icon.jpg' %}" alt="Instagram icon"></a>
+          </div>
+
+          <div class = "member-link">
+            <a href = "https://www.linkedin.com/in/christopher-m-lewis/" target = "_blank"><img class="member-icon grow" src="{% static 'assets/img/linkedin-icon.png' %}" alt="LinkedIn icon"></a>
+          </div>
+        </footer>
+      </div>
+
+    </div>
+
+    <!-- Page footer -->
+    <!-- Add copyright one we've filled it... -->
+    <footer class="footer">
+      <!-- Animate the logos to get larger when you hover over them!!! -->
+      <div class="social-link">
+        <a href="https://tulane.campuslabs.com/engage/organization/cookies-and-code" target="_blank"><img
+            class="social-icon grow" src="{% static 'assets/img/wavesync-icon.png' %}" alt="Wavesync icon"></a>
+      </div>
+    
+      <div class="social-link">
+        <a href="https://www.instagram.com/cookiesandcodetu/?hl=en" target="_blank"><img class="social-icon grow"
+            src="{% static 'assets/img/instagram-icon.jpg' %}" alt="Instagram logo"></a>
+      </div>
+    
+      <div class="social-link">
+        <a href="https://www.facebook.com/cookiesandcode/" target="_blank"><img class="social-icon grow"
+            src="{% static 'assets/img/facebook-icon.jpg' %}" alt="Facebook logo"></a>
+      </div>
+      <div class="social-link">
+        <a href="https://www.linkedin.com/company/cookies-and-code/about/" target="_blank"><img class="social-icon grow"
+            src="{% static 'assets/img/linkedin-icon.png' %}" alt="Linkedin logo"></a>
+      </div>
+    </footer>
+
+  </body>
+
+</html>
