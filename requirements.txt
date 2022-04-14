@@ -78,6 +78,7 @@ glob2==0.7
 gmpy2==2.0.8
 google==3.0.0
 greenlet @ file:///opt/concourse/worker/volumes/live/02d5d57d-1f11-4cf9-580a-19e679c78dc9/volume/greenlet_1600874049903/work
+gunicorn==20.1.0
 h5py==2.10.0
 HeapDict==1.0.1
 helium==3.0.8
@@ -259,6 +260,7 @@ webdriver-manager==3.5.2
 webencodings==0.5.1
 websockets==9.1
 Werkzeug==1.0.1
+whitenoise==6.0.0
 widgetsnbextension==3.5.1
 wrapt==1.11.2
 wurlitzer @ file:///opt/concourse/worker/volumes/live/01a17f3d-eafe-4806-57a1-4b9ef5d1815f/volume/wurlitzer_1594753845129/work
