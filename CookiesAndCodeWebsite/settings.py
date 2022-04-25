@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os 
 import django_heroku
-django_heroku.settings(locals(secret_key=True))
+django_heroku.settings(locals())
 from os import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -136,7 +136,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 STATIC_URL = "static/"
 STATICFILES_STORAGE = "whitenoise.storage.CompresesdManifestStaticFilesStorage"
 STATICFILES_DIR = [
