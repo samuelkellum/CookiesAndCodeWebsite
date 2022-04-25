@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os 
 import django_heroku
+django_heroku.settings(locals())
 from os import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,11 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 #SECRET_KEY = 'django-insecure-%lss36a+m80+0n!n6rvsu0*%z%w(lzl(bqult6eyju8w&1ys%#'
 SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be used, if set, instead)."
-#SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = (os.environ.get('DEBUG_VALUE') == "True")
-DEBUG = False
+DEBUG = (os.environ.get('DEBUG_VALUE') == "True")
+#DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'cookiesandcodetu.herokuapp.com']
 
@@ -148,5 +149,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-django_heroku.settings(locals())
+
 LOGIN_REDIRECT_URL = '' 
