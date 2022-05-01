@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os 
+from os import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,13 +19,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'django-insecure-%lss36a+m80+0n!n6rvsu0*%z%w(lzl(bqult6eyju8w&1ys%#'
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-%lss36a+m80+0n!n6rvsu0*%z%w(lzl(bqult6eyju8w&1ys%#'
+# SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE') == "True")
 
-ALLOWED_HOSTS = ["*"]
+# run 'export DEBUG_VALUE="True"' from terminal to develop locally
+DEBUG = (os.environ.get('DEBUG_VALUE') == "True")
+#SECRET_KEY = os.environ.get('SECRET_KEY')
+ALLOWED_HOSTS = ['*']
+
+AUTH_USER_MODEL = 'main.CustomUser'
 
 
 # Application definition
@@ -36,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
@@ -78,8 +83,23 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    "bk_local": {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'candctu',
+        'USER': 'bennett',
+        'PASSWORD': 'django_tut_you_cant_guess123',
+
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
+# set environment variable of database with 'export DJANGO_DATABASE='bk_local''
+default_database = environ.get('DJANGO_DATABASE', 'default')
+DATABASES['default'] = DATABASES[default_database]
+
 
 
 # Password validation
@@ -116,14 +136,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+STATIC_URL = "static/"
+STATICFILES_STORAGE = "whitenoise.storage.CompresesdManifestStaticFilesStorage"
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'staticfiles')
+]
 
 
+LOGIN_REDIRECT_URL = '' 
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+import django_heroku
+django_heroku.settings(locals())
