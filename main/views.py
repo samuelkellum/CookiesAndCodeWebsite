@@ -21,6 +21,9 @@ def leetcode(request):
 def members(request):
     return render(request, 'main/members.html')
 
+def profile(request):
+    return render(request, 'main/profile.html')
+
 
 
 

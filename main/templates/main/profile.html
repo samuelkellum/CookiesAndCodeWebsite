@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+
+<style>
+
+	.main {
+		padding:  100px;
+		margin:  100px;
+	}
+</style>
+
+<html style = "background: none;">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Cookies & Code</title>
+	
+		<!-- Favicon-->
+		<link rel="shortcut icon" type="image/png" href="{% static 'assets/img/favicon.ico' %}" />
+	
+		<!-- Import stylesheet... -->
+		<link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+	</head>
+
+	<body>
+
+		<!-- Navbar -->
+		<nav>
+			<ul class = "navbar-ul">
+				<li class = "navbar-li"><a href="/home"><strong>Home</strong></a></li>
+				<li class = "navbar-li"><a href="/members"><strong>Members</strong></a></li>
+				<li class = "navbar-li"><a href="/about"><strong>About</strong></a></li>
+				<li class = "navbar-li"><a href="/practice"><strong>Practice</strong></a></li>
+				<li class = "navbar-li"><a href="/gallery"><strong>Gallery</strong></a></li>
+				<li class = "navbar-li"><a href="/recos"><strong>Recos!</strong></a></li>
+				<li class = "navbar-li"><a href="/profile"><strong>My Profile</strong></a></li>
+			</ul>
+		</nav>
+
+
+		<div class="main">
+			{% if user.is_authenticated %}
+				Hi, {{ user.first_name }}!
+				<p><a href="{% url 'logout' %}">Log Out</a></p>
+				{% else %}
+					<p>You are not logged in</p>
+					<a href="{% url 'login' %}">Log In</a>
+			{% endif %}
+		</div>
+
+
+<!-- Page footer -->
+    <!-- Add copyright one we've filled it... -->
+    <footer class="footer">
+      <!-- Animate the logos to get larger when you hover over them!!! -->
+      <div class="social-link">
+        <a href="https://tulane.campuslabs.com/engage/organization/cookies-and-code" target="_blank"><img
+            class="social-icon grow" src="{% static 'assets/img/wavesync-icon.png' %}" alt="Wavesync icon"></a>
+      </div>
+    
+      <div class="social-link">
+        <a href="https://www.instagram.com/cookiesandcodetu/?hl=en" target="_blank"><img class="social-icon grow"
+            src="{% static 'assets/img/instagram-icon.jpg' %}" alt="Instagram logo"></a>
+      </div>
+    
+      <div class="social-link">
+        <a href="https://www.facebook.com/cookiesandcode/" target="_blank"><img class="social-icon grow"
+            src="{% static 'assets/img/facebook-icon.jpg' %}" alt="Facebook logo"></a>
+      </div>
+      <div class="social-link">
+        <a href="https://www.linkedin.com/company/cookies-and-code/about/" target="_blank"><img class="social-icon grow"
+            src="{% static 'assets/img/linkedin-icon.png' %}" alt="Linkedin logo"></a>
+      </div>
+    </footer>
+
+  </body>
+
+</html>
