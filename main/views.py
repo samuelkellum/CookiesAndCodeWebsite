@@ -22,7 +22,12 @@ def members(request):
     return render(request, 'main/members.html')
 
 def profile(request):
-    return render(request, 'main/profile.html')
+    user = request.user
+    context = {
+            'user_events': user.event_set.all(),
+            'user_meetings': user.meeting_set.all(),
+        }
+    return render(request, 'main/profile.html', context)
 
 
 

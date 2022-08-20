@@ -9,6 +9,8 @@
   --blue_hover: #89CFF0;
   --blue_weak: rgba(137, 207, 240, 0.4);
   --blue_strong: rgb(137, 207, 240);
+  --pink_weak: rgb(255, 204, 204, 0.4);
+  --pink_strong: rgb(255, 204, 204);
 
   /* IMAGES */
   --general_background: url("../img/background-3.jpg");
@@ -137,6 +139,7 @@ transition: all 1s ease-out;    /* Gap */
   background-color: var(--blue_weak);
   color: white;
   text-align: center;
+
 }
 
 /* For main logo */

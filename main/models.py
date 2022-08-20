@@ -32,35 +32,35 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     POSITION_CHOICES = [
 
-        ('P', 'President'),
-        ('VP', 'Vice President'),
-        ('VPA', 'Vice President of Administration'),
-        ('VPF', 'Vice President of Finance')
+        ('President', 'President'),
+        ('Vice President', 'Vice President'),
+        ('Vice President of Administration', 'Vice President of Administration'),
+        ('Vice President of Finance', 'Vice President of Finance')
 
     ]
 
-    position = models.CharField(max_length=30, choices=POSITION_CHOICES, blank=True, null=True)
+    position = models.CharField(max_length=80, choices=POSITION_CHOICES, blank=True, null=True)
 
  
     membership_points = models.IntegerField(default=0) # total membership points for member
 
     TIER_CHOICES = [
 
-        ('P', 'Platinum'),
-        ('G', 'Gold'),
-        ('S', 'Silver'),
-        ('B', 'Bronze'),
-        ('N', 'None')
+        ('Platinum', 'Platinum'),
+        ('Gold', 'Gold'),
+        ('Silver', 'Silver'),
+        ('Bronze', 'Bronze'),
+        ('None', 'None')
     ]
 
     membership_tier = models.CharField(max_length=12, choices=TIER_CHOICES, default='N', blank=True, null=True)
 
     YEAR_IN_SCHOOL_CHOICES = [
-    ('FR', 'Freshman'),
-    ('SO', 'Sophomore'),
-    ('JR', 'Junior'),
-    ('SR', 'Senior'),
-    ('GR', 'Graduate'),
+    ('Freshman', 'Freshman'),
+    ('Sophomore', 'Sophomore'),
+    ('Junior', 'Junior'),
+    ('Senior', 'Senior'),
+    ('Graduate', 'Graduate'),
     ]
 
     year_in_school = models.CharField(max_length=12, choices=YEAR_IN_SCHOOL_CHOICES, blank=True, null=True)
@@ -91,6 +91,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
         else:
             self.membership_tier = 'N'
+
+    def is_eboard_to_str(self):
+        if self.is_eboard:
+            return "Yes"
+        return "No"
 
 
 
