@@ -27,7 +27,7 @@ img {
 }
 
 /* Format navbar-link text */
-li a {
+.navbar-ul li a {
   display: block;
   color: var(--charcoal);
   text-align: center;
@@ -36,8 +36,13 @@ li a {
 }
 
 /* Change navbar button to vibrant blue on hover */
-li a:hover {
+.navbar-ul li a:hover {
   background-color: var(--blue_hover);
+}
+
+/* Change navbar button to vibrant blue on hover */
+.active {
+  background-color: var(--blue_hover) !important;
 }
 
 /* Set font for entire website */
@@ -146,6 +151,11 @@ transition: all 1s ease-out;    /* Gap */
     border-radius: 10%
 }
 
+.header {
+  overflow: hidden;
+  padding: 20px 10px;
+}
+
 .navbar-ul {   /*Set z-value higher than member social icons! */
   list-style-type: none;
   margin: 0;
@@ -159,11 +169,11 @@ transition: all 1s ease-out;    /* Gap */
   z-index: 100
 }
 
-.navbar-li {
+.nav-item {
   float: left;
-  width: 16.66%;
+  width: 8%;
   font-family: courier-new, monospace;
-  font-size: 18px;
+  font-size: 12px;
 }
 
 .description {

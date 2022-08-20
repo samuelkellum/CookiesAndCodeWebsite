@@ -13,6 +13,6 @@ urlpatterns = [
     path('home/', views.index, name='home'),
     path('gallery/', views.gallery, name='gallery'),
     path('practice/', views.leetcode, name='practice'),
-    path('members/', views.members, name='memebers'),
+    path('members/', views.members, name='members'),
     path('profile/', views.profile, name='profile')
 ]

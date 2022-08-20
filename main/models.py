@@ -53,7 +53,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         ('N', 'None')
     ]
 
-    membership_tier = models.CharField(max_length=12, choices=TIER_CHOICES, default='N')
+    membership_tier = models.CharField(max_length=12, choices=TIER_CHOICES, default='N', blank=True, null=True)
 
     YEAR_IN_SCHOOL_CHOICES = [
     ('FR', 'Freshman'),
@@ -63,7 +63,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     ('GR', 'Graduate'),
     ]
 
-    year_in_school = models.CharField(max_length=12, choices=YEAR_IN_SCHOOL_CHOICES, null=True)
+    year_in_school = models.CharField(max_length=12, choices=YEAR_IN_SCHOOL_CHOICES, blank=True, null=True)
 
 
     USERNAME_FIELD = 'email'
@@ -99,6 +99,7 @@ class Event(models.Model):
     ''' Model to represent our events '''
 
     name = models.CharField(max_length=100)
+    organizers = models.ManyToManyField(CustomUser, related_name='event_organizers', related_query_name='event_organizers')
     date_time = models.DateTimeField()
     location = models.CharField(max_length=100) # room number
     attendees = models.ManyToManyField(CustomUser)
