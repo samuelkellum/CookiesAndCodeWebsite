@@ -23,10 +23,15 @@ def members(request):
 
 def profile(request):
     user = request.user
-    context = {
+    # have to wrap in a try-except blog because there might be no logged in User
+    # in which case, user.event_set.all() gives error
+    try:
+        context = {
             'user_events': user.event_set.all(),
             'user_meetings': user.meeting_set.all(),
-        }
+            }
+    except:
+        context = {}
     return render(request, 'main/profile.html', context)
 
 

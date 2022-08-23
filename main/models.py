@@ -4,20 +4,24 @@ from django.utils import timezone
 
 from .managers import CustomUserManager
 from django.utils.translation import gettext_lazy as _
+import uuid
 
 EVENT_POINTS = 10 # points attained for attending an event
 MEETING_POINTS = 5 # points attained for attending a meeting
-
-
-class CustomUser(AbstractBaseUser, PermissionsMixin):
-
-    TIER_STANDARDS = {
+TIER_STANDARDS = {
         'Platinum': 100,
         'Gold': 80,
         'Silver': 60,
         'Bronze': 40
 
     } # changem123890
+
+
+class CustomUser(AbstractBaseUser, PermissionsMixin):
+
+
+
+    
 
     email = models.EmailField(_('email address'), unique=True)
     
@@ -50,10 +54,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         ('Gold', 'Gold'),
         ('Silver', 'Silver'),
         ('Bronze', 'Bronze'),
-        ('None', 'None')
+        ('Beginner', 'Beginner')
     ]
 
-    membership_tier = models.CharField(max_length=12, choices=TIER_CHOICES, default='N', blank=True, null=True)
+    membership_tier = models.CharField(max_length=12, choices=TIER_CHOICES, default='Beginner', blank=True, null=True)
 
     YEAR_IN_SCHOOL_CHOICES = [
     ('Freshman', 'Freshman'),
@@ -74,23 +78,29 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.email
 
-    def add_points_update_membership_tier(self, points):
-        self.membership_points += points
+    def get_update_membership_points(self):
+        self.membership_points = EVENT_POINTS * self.event_set.count() + MEETING_POINTS * self.meeting_set.count()
+        self.save()
+        return self.membership_points
+
+    def get_update_membership_tier(self):
 
         if self.membership_points >= TIER_STANDARDS['Platinum']:
-            self.membership_tier = 'P'
+            self.membership_tier = 'Platinum'
 
         elif self.membership_points >= TIER_STANDARDS['Gold']:
-            self.membership_tier = 'G'
+            self.membership_tier = 'Gold'
 
         elif self.membership_points >= TIER_STANDARDS['Silver']:
-            self.membership_tier = 'S'
+            self.membership_tier = 'Silver'
 
         elif self.membership_points >= TIER_STANDARDS['Bronze']:
-            self.membership_tier = 'B'
+            self.membership_tier = 'Bronze'
 
         else:
-            self.membership_tier = 'N'
+            self.membership_tier = 'Beginner'
+        self.save()
+        return self.membership_tier
 
     def is_eboard_to_str(self):
         if self.is_eboard:
@@ -102,13 +112,20 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 class Event(models.Model):
     ''' Model to represent our events '''
-
+    id = models.UUIDField(
+         primary_key = True,
+         default = uuid.uuid4,
+         editable = False)
+    google_drive_folder_id = models.CharField(max_length=200)
     name = models.CharField(max_length=100)
     organizers = models.ManyToManyField(CustomUser, related_name='event_organizers', related_query_name='event_organizers')
-    date_time = models.DateTimeField()
-    location = models.CharField(max_length=100) # room number
+    date_time = models.DateTimeField(blank=True, null=True)
+    location = models.CharField(max_length=100, blank=True, null=True) # room number
     attendees = models.ManyToManyField(CustomUser)
     points = models.IntegerField(default=EVENT_POINTS)
+
+    def __str__(self):
+        return self.name
 
 
 class Meeting(models.Model):
