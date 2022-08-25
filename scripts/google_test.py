@@ -16,7 +16,7 @@ def run():
 	drive = GoogleDrive(gauth)
 
 	# google Sheets API stuff
-	sheets = Sheets.from_files('./client_secrets.json', './storage.json')
+	sheets = Sheets.from_files('./client_secrets.json', './storage1.json')
 
 	# List files in Google Drive
 		# '1ZSwsY7xRjigiuK9rmdpTTMjM-T7epgSu' is '/"Fall 2022"/Events' Folder in Google Drive
