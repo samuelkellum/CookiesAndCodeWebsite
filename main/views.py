@@ -19,6 +19,7 @@ def leetcode(request):
 
 
 def members(request):
+    # context = #Python code to get all users
     return render(request, 'main/members.html')
 
 def profile(request):
