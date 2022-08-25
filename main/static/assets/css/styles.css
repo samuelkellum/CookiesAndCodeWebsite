@@ -9,6 +9,8 @@
   --blue_hover: #89CFF0;
   --blue_weak: rgba(137, 207, 240, 0.4);
   --blue_strong: rgb(137, 207, 240);
+  --pink_weak: rgb(255, 204, 204, 0.4);
+  --pink_strong: rgb(255, 204, 204);
 
   /* IMAGES */
   --general_background: url("../img/background-3.jpg");
@@ -27,7 +29,7 @@ img {
 }
 
 /* Format navbar-link text */
-li a {
+.navbar-ul li a {
   display: block;
   color: var(--charcoal);
   text-align: center;
@@ -36,8 +38,13 @@ li a {
 }
 
 /* Change navbar button to vibrant blue on hover */
-li a:hover {
+.navbar-ul li a:hover {
   background-color: var(--blue_hover);
+}
+
+/* Change navbar button to vibrant blue on hover */
+.active {
+  background-color: var(--blue_hover) !important;
 }
 
 /* Set font for entire website */
@@ -132,6 +139,7 @@ transition: all 1s ease-out;    /* Gap */
   background-color: var(--blue_weak);
   color: white;
   text-align: center;
+
 }
 
 /* For main logo */
@@ -144,6 +152,11 @@ transition: all 1s ease-out;    /* Gap */
     height: 300px;
     width: 300px;
     border-radius: 10%
+}
+
+.header {
+  overflow: hidden;
+  padding: 20px 10px;
 }
 
 .navbar-ul {   /*Set z-value higher than member social icons! */
@@ -159,11 +172,11 @@ transition: all 1s ease-out;    /* Gap */
   z-index: 100
 }
 
-.navbar-li {
+.nav-item {
   float: left;
-  width: 16.66%;
+  width: 8%;
   font-family: courier-new, monospace;
-  font-size: 18px;
+  font-size: 12px;
 }
 
 .description {
