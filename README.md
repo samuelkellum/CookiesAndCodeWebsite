@@ -43,7 +43,7 @@ This website was built to economize the acquisition of new members and increase 
     1. DEBUG_VALUE="True"
     2. PORT=8000
     3. DJANGO_DATABASE='[databaseKEY]'
-14. Django projects require a secrete key. Create and append a randomly-generated secret key to .env with `echo “SECRET_KEY=$(openssl rand -base64 32)” > .env`
+14. Django projects require a secrete key. Create and append a randomly-generated secret key to .env with `echo “SECRET_KEY=$(openssl rand -base64 32)” >> .env`
 15. Run `heroku local` to start the server
 16. In your browser of choice, navigate to http://127.0.0.1:8000/admin/ and login with the superuser credentials you created.
 17. Click “View Site” in the top right of the webpage. You should now have access to a working website!
