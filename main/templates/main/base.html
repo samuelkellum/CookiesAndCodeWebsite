@@ -39,7 +39,14 @@
         <li class = "nav-item"><a href="{% url 'main:practice' %}" class="{% active_link 'main:practice'%}"><strong>Practice</strong></a></li>
         <li class = "nav-item"><a href="{% url 'main:gallery' %}" class="{% active_link 'main:gallery'%}"><strong>Gallery</strong></a></li>
         <li class = "nav-item"><a href="{% url 'main:recos' %}" class="{% active_link 'main:recos'%}"><strong>Recos!</strong></a></li>
-        <li class = "nav-item"><a href="{% url 'main:profile' %}"  class="{% active_link 'main:profile'%}"><strong>Profile</strong></a></li>
+        {% if user.is_authenticated %}
+          <li class = "profile-nav-item"><a href="{% url 'logout' %}"><strong>Log Out</strong></a></li>
+          <li class = "profile-nav-item"><a href="{% url 'main:profile' %}" class="{% active_link 'main:profile'%}"><strong>Profile</strong></a></li>
+
+
+        {% else %}
+          <li class = "profile-nav-item"><a href="{% url 'login' %}"><strong>Sign In</strong></a></li>
+        {% endif %}
       </div>
     </div>
 

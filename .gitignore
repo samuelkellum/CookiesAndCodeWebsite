@@ -11,6 +11,9 @@ credentials.json
 storage.json
 storage1.json
 
+# sql database dumps
+*.sql
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
