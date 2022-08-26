@@ -1,4 +1,8 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.shortcuts import render, redirect
+
 
 # Create your views here.
 def index(request):
@@ -34,6 +38,7 @@ def profile(request):
     except:
         context = {}
     return render(request, 'main/profile.html', context)
+
 
 
 

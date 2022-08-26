@@ -11,12 +11,14 @@
 	
 	<div class="main">
 		{% if user.is_authenticated %}
-			Hi, {{ user.first_name }}!
-			<p><a href="{% url 'logout' %}">Log Out</a></p>
 
-			<legend><h1>{{ user }}</h1></legend>
+			<h1>Hi, {{ user.first_name }}!</h1>
+			
+			
+
+			<legend><h2>{{ user }}</h2></legend>
 			<table class="user-table" id="user-gen">
-				<caption margin="10px">User Information</caption>
+				<caption margin="10px">User Information </caption>
 				<tr>
 					<th> Email </th>
 					<td> {{ user.email }} </td>
@@ -90,6 +92,7 @@
 		{% else %}
 			<p>You are not logged in</p>
 			<a href="{% url 'login' %}">Log In</a>
+			<p>Forgot password?</p><a href="{% url 'main:password_reset' %}">Reset password</a>
 		{% endif %}
 	</div>
 
