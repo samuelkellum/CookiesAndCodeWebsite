@@ -1,6 +1,19 @@
 # Mac
 .DS_Store
 
+# Data
+data/
+
+# GoogleDrive API credentials
+client_secrets.json
+settings.yaml
+credentials.json
+storage.json
+storage1.json
+
+# sql database dumps
+*.sql
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

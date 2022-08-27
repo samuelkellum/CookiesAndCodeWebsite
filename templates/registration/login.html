@@ -1,0 +1,25 @@
+<!-- templates/registration/login.html -->
+<!DOCTYPE html>
+{% extends "main/base.html" %}
+{% load static %}
+{% load active_link_tags %}
+
+
+<html style = "background: none;">
+
+  {% block title %}Log In Page{% endblock title %}
+
+  {% block content %} 
+
+
+  <h2>Log In</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Log In</button>
+  </form>
+
+  <p>Forgot password?</p><a href="{% url 'main:password_reset' %}">Reset password</a>
+  {% endblock content %}
+
+</html>

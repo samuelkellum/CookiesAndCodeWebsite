@@ -1,0 +1,32 @@
+.user-table {
+	margin-bottom: 70px;
+	margin-top:10px;
+}
+
+.user-table td, .user-table th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+#user-gen tr:nth-child(odd){background-color: var(--pink_weak);}
+#user-gen tr:nth-child(even){background-color: #f2f2f2;}
+#user-gen tr:hover {background-color: var(--pink_strong);}
+
+#user-events tr:nth-child(odd){background-color: var(--blue_weak);}
+#user-events tr:nth-child(even){background-color: #f2f2f2;}
+#user-events tr:hover {background-color: var(--blue_strong);}
+
+#user-meetings tr:nth-child(odd){background-color: var(--pink_weak);}
+#user-meetings tr:nth-child(even){background-color: #f2f2f2;}
+#user-meetings tr:hover {background-color: var(--pink_strong);}
+
+.user-table th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	width: 20%;
+}
+
+.user-table td {
+	width: 80%;
+}

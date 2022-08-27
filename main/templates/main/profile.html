@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% extends "./base.html" %}
+{% load static %}
+{% load active_link_tags %}
+
+
+<html style = "background: none;">
+
+	{% block content %}
+	
+	
+	<div class="main">
+		{% if user.is_authenticated %}
+
+			<h1>Hi, {{ user.first_name }}!</h1>
+			
+			
+
+			<legend><h2>{{ user }}</h2></legend>
+			<table class="user-table" id="user-gen">
+				<caption margin="10px">User Information </caption>
+				<tr>
+					<th> Email </th>
+					<td> {{ user.email }} </td>
+				</tr>
+				<tr>
+					<th> First Name </th>
+					<td> {{ user.first_name }} </td>
+				</tr>
+				<tr>
+					<th> Last Name </th>
+					<td> {{ user.last_name }} </td>
+				</tr>
+				<tr>
+					<th> Classification </th>
+					<td> {{ user.year_in_school }} </td>
+				</tr>
+				<tr>
+					<th> Date Joined </th>
+					<td> {{ user.date_joined|date:"Y-m-d"}} </td>
+				</tr>
+				<tr>
+					<th> Executive Board </th>
+					<td> {{ user.is_eboard_to_str }} </td>
+				</tr>
+				<tr>
+					<th> Position </th>
+					<td> {{ user.position }} </td>
+				</tr>
+				<tr>
+					<th> Membership Tier </th>
+					<td> {{ user.get_update_membership_tier }} </td>
+				</tr>
+				<tr>
+					<th> Membership Points </th>
+					<td> {{ user.get_update_membership_points }} </td>
+				</tr>
+			</table>
+
+			<table class="user-table" id="user-events">
+				<caption>Events Attended</caption>
+				<tr>
+					<th>Event</th>
+					<th>Date</th>
+					<th>Location</th>
+				</tr>
+				{% for event in user_events %}
+				<tr>
+					<th>{{ event.name }}</th>
+					<td>{{ event.date_time|date:"Y-m-d" }} </td>
+					<td>{{ event.location }} </td>
+				</tr>
+				{% endfor %}
+			</table>
+
+			<table class="user-table" id="user-meetings">
+				<caption>Meetings Attended</caption>
+				<tr>
+					<th>Date</th>
+					<th>Location</th>
+				</tr>
+				{% for meeting in user_meetings %}
+				<tr>
+					<td>{{ meeting.date_time|date:"Y-m-d" }} </td>
+					<td>{{ meeting.location }} </td>
+				</tr>
+				{% endfor %}
+			</table>
+
+
+
+		{% else %}
+			<p>You are not logged in</p>
+			<a href="{% url 'login' %}">Log In</a>
+			<p>Forgot password?</p><a href="{% url 'main:password_reset' %}">Reset password</a>
+		{% endif %}
+	</div>
+
+	{% endblock %}
+
+</html>

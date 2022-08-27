@@ -1,31 +1,12 @@
-{% load static %}
 <!DOCTYPE html>
-<html>
+{% extends "./base.html" %}
+{% load static %}
+{% load active_link_tags %}
 
-  <head>
-    <meta charset = "UTF-8">
-    <title>Cookies & Code</title>
-    
-    <!-- Favicon-->
-    <link rel="shortcut icon" type="image/png" href="{% static 'assets/img/favicon.ico' %}" />
-    
-    <!-- Import stylesheet... -->
-    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
-  </head>
+<html style = "background: none;">
 
-  <body>
-    
-    <!-- Navbar -->
-    <nav>
-      <ul class="navbar-ul">
-        <li class="navbar-li"><a href="/home"><strong>Home</strong></a></li>
-        <li class="navbar-li"><a href="/members"><strong>Members</strong></a></li>
-        <li class="navbar-li"><a href="/about"><strong>About</strong></a></li>
-        <li class="navbar-li"><a href="/practice"><strong>Practice</strong></a></li>
-        <li class="navbar-li"><a href="/gallery"><strong>Gallery</strong></a></li>
-        <li class="navbar-li"><a href="/recos"><strong>Recos!</strong></a></li>
-      </ul>
-    </nav>
+  {% block content %}
+
 
     <!-- Main logo -->
     <div style = "background: linear-gradient(35deg, rgba(204, 255, 255, 0.8), rgba(255, 204, 204, 0.8)); position: relative; margin-left: -10px; margin-right: -10px;">   <!-- Add banner! -->
@@ -62,29 +43,5 @@
       <button class = "registration-button grow" style = "margin-left: 60px;"><a target = "_blank" style = "text-decoration: none; color: #161C20;" href = "https://forms.gle/5SJTmKwoMPurRdj56">Apply to Be an Officer</a></button> <!-- Link to registation forms once they're made! -->
     </div>
 
-    <!-- Page footer -->
-    <!-- Add copyright one we've filled it... -->
-    <footer class="footer">
-      <!-- Animate the logos to get larger when you hover over them!!! -->
-      <div class="social-link">
-        <a href="https://tulane.campuslabs.com/engage/organization/cookies-and-code" target="_blank"><img
-            class="social-icon grow" src="{% static 'assets/img/wavesync-icon.png' %}" alt="Wavesync icon"></a>
-      </div>
-    
-      <div class="social-link">
-        <a href="https://www.instagram.com/cookiesandcodetu/?hl=en" target="_blank"><img class="social-icon grow"
-            src="{% static 'assets/img/instagram-icon.jpg' %}" alt="Instagram logo"></a>
-      </div>
-    
-      <div class="social-link">
-        <a href="https://www.facebook.com/cookiesandcode/" target="_blank"><img class="social-icon grow"
-            src="{% static 'assets/img/facebook-icon.jpg' %}" alt="Facebook logo"></a>
-      </div>
-      <div class="social-link">
-        <a href="https://www.linkedin.com/company/cookies-and-code/about/" target="_blank"><img class="social-icon grow"
-            src="{% static 'assets/img/linkedin-icon.png' %}" alt="Linkedin logo"></a>
-      </div>
-    </footer>
-  </body>
-
+   {% endblock %}
 </html>
