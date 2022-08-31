@@ -65,14 +65,15 @@ def run():
 		try:
 			print("IN TRY")
 			location = event_info_df['Location'][0]
-			print(location)
-			correct_date = datetime.strptime(event_info_df['Date Time'][0], "%m/%d/%Y %H:%M")
+			print(event_info_df.columns)
+			correct_date = datetime.strptime(event_info_df['Date Time'][0], "%m/%d/%Y %H:%M:%S")
 			date_time = pytz.timezone('US/Central').localize(correct_date) # best practice to have timezone aware dates
 		# populate fields with blanks
+		
 		except:
 			print("IN EXCEPT")
-			location = ''
 			date_time = datetime.now()
+		
 
 		# it's possible that an Event object with google_drive_folder_id=[id] has already been created when
 		# "Event" folder was "Event 1"; it might have since changed to "Learn to Hack", in which case we only want to 
@@ -82,6 +83,7 @@ def run():
 			defaults={'name': event_dict["event_name"], 'location': location, 'date_time': date_time}
 			)
 
+		event.organizers.clear() # somebody who is not an organizer now may have been listed as one before
 		for email in event_info_df['Organizers']:
 			print(email)
 			user = CustomUser.objects.get(email=email)
@@ -89,6 +91,7 @@ def run():
 			#event.save()
 
 		attendance_df = event_dict['event_attendance_spread_sheet'].sheets[0].to_frame()
+		event.attendees.clear() 
 		for email in attendance_df["Tulane Email"]:
 			print(email)
 			user = CustomUser.objects.get(email=email)
