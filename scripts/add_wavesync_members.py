@@ -3,23 +3,7 @@ from main.models import CustomUser
 
 
 def run(org_roster_file_name):
-	'''
-	# we don't need to delete any since we use get_or_create method
-	
-	e_board_emails_list = ["bennettkahn101@gmail.com", "skellum@tulane.edu",
-							"ljanko@tulane.edu", "bsolanky@tulane.edu", 
-							"iemanuel@tulane.edu", "clewis24@tulane.edu", 
-							"aanand3@tulane.edu"]
-
-	all_non_bennett_users = CustomUser.objects.exclude(email__in=e_board_emails_list)
-
-	all_non_bennett_users.delete()
-	'''
-	
-
-	
-
-	roster_df = pd.read_csv("/Users/bennettkahn/CookiesAndCodeWebsite/data/{}".format(org_roster_file_name))
+	roster_df = pd.read_csv("./data/{}".format(org_roster_file_name), skiprows=3)
 
 	print("Creating profiles for all users on Cookies & Code Wave Sync Roster...")
 

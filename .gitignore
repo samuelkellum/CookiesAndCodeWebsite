@@ -11,11 +11,16 @@ credentials.json
 storage.json
 storage1.json
 
+# some aws stuff that was created
+awscli-bundle
+awscli-bundle.zip
+
 # sql database dumps
 *.sql
 
 # database dumps
-*.dump
+*.dump 
+*.dump.*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
