@@ -131,6 +131,9 @@ class Event(models.Model):
 
 class Meeting(models.Model):
     ''' Model to represent our weekly meetings '''
+    google_drive_folder_id = models.CharField(max_length=200, default='')
+    name = models.CharField(max_length=10, default='')
+    organizers = models.ManyToManyField(CustomUser, related_name='meeting_organizers', related_query_name='meeting_organizers')
     date_time = models.DateTimeField()
     location = models.CharField(max_length=100)
     attendees = models.ManyToManyField(CustomUser)

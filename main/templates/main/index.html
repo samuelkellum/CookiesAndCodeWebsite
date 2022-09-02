@@ -13,46 +13,66 @@
       <img id = "logo-animation" style = "box-shadow: 0 0 8px 8px rgba(137, 207, 240, 0.4); opacity: 0.9;" class = "center" src = "{% static 'assets/img/logo.png' %}" alt="Cookies and code logo">
     </div>
     <!-- Animated event calendar -->
-    
     <div>
         <table class = "slow-grow">
+            <caption margin="10px">Events</caption>
             <thead style="background: rgba(137, 207, 240, 1); ">
               <tr>
                   <th>What?</th>
                   <th>When?</th>
                   <th>Where?</th>
+                  <th>Main Organizer</th>
               </tr>
             </thead>
             <tbody>
 
-              <tr>
-                  <td scope="row">Learn to Code</td>
-                  <td>Thursday, 9/8 @ 5-6pm</td>
-                  <td>Stanley Thomas 302</td>
-              </tr>
-              
-              <tr>
-                  <td scope="row">General Body Meeting</td>
-                  <td>Thursday, 9/15 @ 5-6pm</td>
-                  <td>TBD</td>
-              </tr>
 
-              <tr>
-                  <td scope="row">Web Development with Python's Django</td>
-                  <td>Thursday, 9/22 @ 5-6pm</td>
-                  <td>TBD</td>
-              </tr>
+              {% for event in all_events %}
+                <tr>
+                  <th>{{ event.name }}</th>
+                  <td>{{ event.date_time|date:"Y-m-d" }} </td>
+                  <td>{{ event.location }} </td>
+                  <td>{{ event.organizers.all|first }} </td>
+                </tr>
+              {% endfor %}
 
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <div>
+        <table class = "slow-grow">
+            <caption margin="10px">Meetings</caption>
+            <thead style="background: rgba(137, 207, 240, 1); ">
               <tr>
-                  <td scope="row">General Body Meeting</td>
-                  <td>Thursday, 9/29 @ 5-6pm</td>
-                  <td>TBD</td>
+
+                  
+                  <th>When?</th>
+                  <th>Where?</th>
+                  <th>Main Organizer</th>
               </tr>
+            </thead>
+            <tbody>
+
+              {% for meeting in all_meetings %}
+                <tr>
+                  
+                  <td>{{ meeting.date_time|date:"Y-m-d" }} </td>
+                  <td>{{ meeting.location }} </td>
+                  <td>{{ meeting.organizers.all|first }} </td>
+                </tr>
+              {% endfor %}
+
 
             </tbody>
         </table>
     </div>
     
+
     <!-- Registration buttons -->
     <div id="registration-group">
       <button class = "registration-button grow" style = "margin-right: 60px;"><a target = "_blank" style = "text-decoration: none; color: #161C20;" href = "https://tulane.campuslabs.com/engage/organization/cookies-and-code">Join General Body</a></button> <!-- WHY WON'T BUTTONS GROW?!? -->

@@ -2,11 +2,13 @@ from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import render, redirect
+from .models import CustomUser, Event, Meeting
 
 
 # Create your views here.
 def index(request):
-    return render(request, 'main/index.html')
+    context = {'all_events': Event.objects.order_by('date_time'), 'all_meetings': Meeting.objects.order_by('date_time')}
+    return render(request, 'main/index.html', context)
 
 def about(request):
     return render(request, 'main/about.html')
