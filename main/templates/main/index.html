@@ -13,7 +13,6 @@
       <img id = "logo-animation" style = "box-shadow: 0 0 8px 8px rgba(137, 207, 240, 0.4); opacity: 0.9;" class = "center" src = "{% static 'assets/img/logo.png' %}" alt="Cookies and code logo">
     </div>
     <!-- Animated event calendar -->
-
     <div>
         <table class = "slow-grow">
             <caption margin="10px">Events</caption>
@@ -26,6 +25,7 @@
               </tr>
             </thead>
             <tbody>
+
 
               {% for event in all_events %}
                 <tr>
@@ -42,11 +42,14 @@
         </table>
     </div>
 
+
+
     <div>
         <table class = "slow-grow">
             <caption margin="10px">Meetings</caption>
             <thead style="background: rgba(137, 207, 240, 1); ">
               <tr>
+
                   
                   <th>When?</th>
                   <th>Where?</th>
@@ -63,7 +66,6 @@
                   <td>{{ meeting.organizers.all|first }} </td>
                 </tr>
               {% endfor %}
-
 
 
             </tbody>
