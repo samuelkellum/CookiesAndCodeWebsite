@@ -15,6 +15,8 @@ def run():
 	gauth = GoogleAuth()
 	drive = GoogleDrive(gauth)
 
+	#f = open("./storage.json")
+	#reg = re.search(r'\"token_expiry\": \"([\s\S]*?)T', s)
 	# google Sheets API stuff
 	sheets = Sheets.from_files('./client_secrets.json', './storage.json')
 
