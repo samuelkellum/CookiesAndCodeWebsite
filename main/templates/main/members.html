@@ -19,7 +19,7 @@
               <tr>
                   <td class = "description-cell">
                     <p>
-                      Our membership is divided into two categories: general body and excecutive board.
+                      Our membership is divided into two categories: <strong>general body</strong> and <strong>excecutive board</strong>.
                       Our general body is 200+ members strong, and we encourage any Tulane student who has
                       an interest in computer science to join. General body members receive emails about C&C
                       events and are privy to new developments happening within the club.
@@ -37,7 +37,44 @@
         </table>
     </div>
 
+    <div id="tier-table-div">
+      <table id="tier-table" class="slow-grow">
+        
+
+        <thead style="background: rgba(137, 207, 240, 1); ">
+          <tr>
+              <th id="tier-table-header" colspan="3">General Body Membership Tiers</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr id="tier-about-row">
+            <td colspan="3" class="description-cell"id="tier-about-cell">
+              Beginning in the Fall 2022 semester, Cookies & Code is introducing a <strong>Tier-Based Membership System</strong>. Our <strong>Events</strong> are worth {{ event_points }} points while our <strong>Meetings</strong> are worth {{ meeting_points }} points. Members' membership tiers dynamically update as they attend our meetings/event, with membership tiers officially being awarded at the end of the semester. These tiers are geared to help promote a sense of celebration towards members who go above and beyond just being registered with the club. Checkout <a href="{% url 'main:profile' %}">your profile page</a> to view your attendance, points, and tier throughout the semester! The tiers are as follows:
+            </td>
+          </tr>
+
+          <tr>
+            <th> Tier Name </th>
+            <th> Minimum Points </th>
+            <th> Tier Description </th>
+          </tr>
+          {% for tier in tiers_data %}
+          <tr>
+            <th>{{ tier.name }}</th>
+            <td>{{ tier.points }}</td>
+            <td class="tier-description-cell">{{ tier.description }}</td>
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+
+      </table>
+    </div>
+
     <!-- Member profiles -->
+    <h2 class="members-header"> Executive Board Members </h2>
     <div class = "member-grid">
 
       <!-- First member... -->
@@ -197,6 +234,32 @@
             <a href="https://www.linkedin.com/in/ananya-anand-2078b41b0/" target="_blank"><img class="member-icon grow" src="{% static 'assets/img/linkedin-icon.png' %}" alt="LinkedIn icon"></a>
           </div>
         </footer>
+      </div>
+    </div>
+
+      <div>
+        <h2 class="members-header">
+          <i>Active</i> General Body Members
+        </h2>
+
+        <table id="general-body-members-table">
+          <tr>
+            <th> First Name </th>
+            <th> Last Name </th>
+            <th> Membership Tier </th>
+            <th> Points </th>
+          </tr>
+
+          {% for user in active_members %}
+          <tr>
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.membership_tier }}</td>
+            <td>{{ user.membership_points }}</td>
+          </tr>
+
+          {% endfor %}
+        </table>
       </div>
 
       {% endblock %}

@@ -8,10 +8,16 @@
   {% block content %}
 
 
+
     <!-- Main logo -->
     <div style = "background: linear-gradient(35deg, rgba(204, 255, 255, 0.8), rgba(255, 204, 204, 0.8)); position: relative; margin-left: -10px; margin-right: -10px;">   <!-- Add banner! -->
       <img id = "logo-animation" style = "box-shadow: 0 0 8px 8px rgba(137, 207, 240, 0.4); opacity: 0.9;" class = "center" src = "{% static 'assets/img/logo.png' %}" alt="Cookies and code logo">
     </div>
+
+    <div style="background-color: rgba(137, 207, 240, 1); padding: 10px; margin: 15px; border-radius: 20px;">
+      <h3> View the <a href="{% url 'main:members' %}">Members page</a> to read about our Tier-Based Membership System we are introducing in the Fall 2022 Semester </h3>
+    </div>
+
     <!-- Animated event calendar -->
     <div>
         <table class = "slow-grow">
@@ -71,6 +77,7 @@
             </tbody>
         </table>
     </div>
+
     
 
     <!-- Registration buttons -->

@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import render, redirect
-from .models import CustomUser, Event, Meeting
+from .models import CustomUser, Event, Meeting, EVENT_POINTS, MEETING_POINTS, TIERS_DATA
 
 
 # Create your views here.
@@ -25,8 +25,15 @@ def leetcode(request):
 
 
 def members(request):
-    # context = #Python code to get all users
-    return render(request, 'main/members.html')
+    for u in CustomUser.objects.all():
+        u.get_update_membership_points()
+        u.get_update_membership_tier()
+    active_members = CustomUser.objects.filter(membership_points__gt=0, is_eboard=False).order_by('-membership_points')
+    context = {'event_points': EVENT_POINTS, 
+                'meeting_points': MEETING_POINTS, 
+                'tiers_data': TIERS_DATA,
+                'active_members': active_members} #Python code to get all users
+    return render(request, 'main/members.html', context)
 
 def profile(request):
     user = request.user

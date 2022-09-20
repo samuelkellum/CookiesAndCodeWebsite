@@ -13,16 +13,21 @@ TIER_STANDARDS = {
         'Platinum': 100,
         'Gold': 80,
         'Silver': 60,
-        'Bronze': 40
+        'Bronze': 40,
+        'Beginner': 0
 
-    } # changem123890
+    } 
 
+TIERS_DATA = [
+        {'name': 'Platinum', 'points': 100, 'description': open('main/platinum.txt', 'r+').read()},
+        {'name': 'Gold', 'points': 80, 'description': open('main/gold.txt', 'r+').read()},
+        {'name': 'Silver', 'points': 50, 'description': open('main/silver.txt', 'r+').read()},
+        {'name': 'Bronze', 'points': 30, 'description': open('main/bronze.txt', 'r+').read()},
+        {'name': 'Beginner', 'points': 0, 'description': open('main/beginner.txt', 'r+').read()}
+    ]
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
 
-
-
-    
 
     email = models.EmailField(_('email address'), unique=True)
     
