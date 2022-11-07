@@ -8,6 +8,7 @@ import pytz
 from datetime import datetime
 from django.utils.dateparse import parse_date
 from main.models import CustomUser, Event, Meeting
+import time
 
 def run():
 
@@ -109,7 +110,8 @@ def run():
 	# '1oVCHPpSL6SaqZixTBA29N6oJc8cNemj9' is '/"Fall 2022"/Meetings' Folder in Google Drive
 	fileList = drive.ListFile({'q': "'1oVCHPpSL6SaqZixTBA29N6oJc8cNemj9' in parents and trashed=false"}).GetList()
 	meetings_dict = dict()
-
+	# sleep for a couple of minutes to get rid of quota error
+	time.sleep(120)
 	# iterate over all folders in "meetings" Folder
 	for file1 in fileList:
 		print('title: %s, id: %s' % (file1['title'], file1['id']))
@@ -140,6 +142,7 @@ def run():
 		meeting_dict["meeting_attendance_spread_sheet"] = attendance_spread_sheet
 
 		meetings_dict[meeting_folder_id] = meeting_dict
+
 
 	for meeting_folder_id, meeting_dict in meetings_dict.items():
 		print(type(meeting_folder_id))
