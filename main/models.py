@@ -85,7 +85,18 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         return self.email
 
     def get_update_membership_points(self):
-        self.membership_points = EVENT_POINTS * self.event_set.count() + MEETING_POINTS * self.meeting_set.count()
+        # below commented method doesnt allow for events to have different point values
+        # self.membership_points = EVENT_POINTS * self.event_set.count() + MEETING_POINTS * self.meeting_set.count()
+
+        points = 0
+        # add all event points
+        for event in self.event_set.all():
+            points += event.points
+        # add all meeting points
+        for meeting in self.meeting_set.all():
+            points += meeting.points
+
+        self.membership_points = points
         self.save()
         return self.membership_points
 

@@ -193,6 +193,21 @@ def run():
 			#meeting.save()
 		print("DONE\n")
 
+	# ADD INTERNSHIP PANEL PEOPLE!
+	print("ADDING INTERNSHIP WORKSHOP DATA")
+	df = pd.read_csv("./data/internship_data.csv")
+	attendees_df = df[df["Here?"] == True]
+	internship_event = Event.objects.get(name="Internship Prep Workshop")
+	internship_event.attendees.clear()
+	for email in attendance_df["Tulane Email"]:
+		print(email)
+		try:
+			user = CustomUser.objects.get(email=email)
+			internship_event.attendees.add(user)
+		except:
+			print("User not in system")
+		print()
+
 
 
 
