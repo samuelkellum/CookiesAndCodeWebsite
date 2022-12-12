@@ -38,6 +38,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
 
+    bonus_points = models.IntegerField(default=0, blank=True, null=True) # bonus points received for various things
+
     is_eboard = models.BooleanField(default=False)
 
     POSITION_CHOICES = [
@@ -95,6 +97,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         # add all meeting points
         for meeting in self.meeting_set.all():
             points += meeting.points
+
+        points += self.bonus_points # add bonus points to member's membership_points
 
         self.membership_points = points
         self.save()
