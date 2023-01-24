@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
 from .forms import CustomUserCreationForm, CustomUserChangeForm
-from .models import CustomUser, Event, Meeting
+from .models import CustomUser, Event, Meeting, Semester, SemesterMembershipStorage
 
 
 class CustomUserAdmin(UserAdmin):
@@ -39,3 +39,5 @@ class CustomUserAdmin(UserAdmin):
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Event)
 admin.site.register(Meeting)
+admin.site.register(Semester)
+admin.site.register(SemesterMembershipStorage)

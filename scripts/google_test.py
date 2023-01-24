@@ -98,7 +98,7 @@ def run():
 		for email in attendance_df["Tulane Email"]:
 			print(email)
 			try:
-				user = CustomUser.objects.get(email=email)
+				user = CustomUser.objects.get(email=email.lower())
 				event.attendees.add(user)
 			except:
 				print("User not in system")

@@ -26,6 +26,29 @@ TIERS_DATA = [
         {'name': 'Beginner', 'points': 0, 'description': open('main/beginner.txt', 'r+').read()}
     ]
 
+
+def get_curr_semester():
+    # THIS MUST BE UPDATED TO THE CURRENT SEMESTER
+    # Whatever semester this returns is the one for which points are calculated 
+    CURR_PART_OF_TERM = "Fall"
+    CURR_YEAR = '2022'
+    return Semester.objects.get(part_of_term=CURR_PART_OF_TERM, year=CURR_YEAR)
+
+class Semester(models.Model):
+    ''' Model to represent a semester '''
+    POT_CHOICES = [
+
+        ('Fall', 'Fall'),
+        ('Spring', 'Spring'),
+        ('Summer', 'Summer'),
+    ]
+    part_of_term = models.CharField(max_length=20, choices=POT_CHOICES, default='Fall') # e.g. 'Fall 2022'
+    year = models.CharField(max_length=10, default='2022')
+    
+
+    def __str__(self):
+        return '{} {}'.format(self.part_of_term, self.year)
+
 class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 
@@ -91,14 +114,20 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         # self.membership_points = EVENT_POINTS * self.event_set.count() + MEETING_POINTS * self.meeting_set.count()
 
         points = 0
+        curr_semester = get_curr_semester()
         # add all event points
         for event in self.event_set.all():
-            points += event.points
+            if event.semester == curr_semester:
+                points += event.points
         # add all meeting points
         for meeting in self.meeting_set.all():
-            points += meeting.points
+            if meeting.semester == curr_semester:
+                points += meeting.points
 
-        points += self.bonus_points # add bonus points to member's membership_points
+        try:
+            points += self.bonus_points # add bonus points to member's membership_points
+        except:
+            print("no membership points for user")
 
         self.membership_points = points
         self.save()
@@ -145,6 +174,8 @@ class Event(models.Model):
     attendees = models.ManyToManyField(CustomUser)
     points = models.IntegerField(default=EVENT_POINTS)
 
+    semester = models.ForeignKey(Semester, on_delete=models.CASCADE, blank=True, null=True)
+
     def __str__(self):
         return self.name
 
@@ -158,4 +189,20 @@ class Meeting(models.Model):
     location = models.CharField(max_length=100)
     attendees = models.ManyToManyField(CustomUser)
     points = models.IntegerField(default=MEETING_POINTS)
+
+    semester = models.ForeignKey(Semester, on_delete=models.CASCADE, blank=True, null=True)
+
+
+
+class SemesterMembershipStorage(models.Model):
+    ''' Model to store membership points and tiers of previous semesters '''
+    semester = models.ForeignKey(Semester, on_delete=models.CASCADE, blank=True, null=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, default=0)
+    membership_points = models.IntegerField(default=0)
+    membership_tier = models.CharField(max_length=12, default='', blank=True, null=True)
+
+    def __str__(self):
+        return '{}, {}'.format(self.user.email, str(self.semester))
+
+
 
