@@ -15,7 +15,7 @@
     </div>
 
     <div style="background-color: rgba(137, 207, 240, 1); padding: 10px; margin: 15px; border-radius: 20px;">
-      <h3> View the <a href="{% url 'main:members' %}">Members page</a> to read about our Tier-Based Membership System we are introducing in the Fall 2022 Semester </h3>
+      <h3> View the <a href="{% url 'main:members' %}">Members page</a> to read about our Tier-Based Membership System </h3>
     </div>
 
     <!-- Animated event calendar -->
@@ -27,18 +27,18 @@
                   <th>What?</th>
                   <th>When?</th>
                   <th>Where?</th>
-                  <th>Main Organizer</th>
+                  <th>Main Organizer(s)</th>
               </tr>
             </thead>
             <tbody>
 
 
-              {% for event in all_events %}
+              {% for event in semester_events %}
                 <tr>
                   <th>{{ event.name }}</th>
                   <td>{{ event.date_time|date:"Y-m-d" }} </td>
                   <td>{{ event.location }} </td>
-                  <td>{{ event.organizers.all|first }} </td>
+                  <td class="organizers-cell">{{ event.organizers.all|join:", " }} </td>
                 </tr>
               {% endfor %}
 
@@ -59,17 +59,17 @@
                   
                   <th>When?</th>
                   <th>Where?</th>
-                  <th>Main Organizer</th>
+                  <th>Main Organizer(s)</th>
               </tr>
             </thead>
             <tbody>
 
-              {% for meeting in all_meetings %}
+              {% for meeting in semester_meetings %}
                 <tr>
                   
                   <td>{{ meeting.date_time|date:"Y-m-d" }} </td>
                   <td>{{ meeting.location }} </td>
-                  <td>{{ meeting.organizers.all|first }} </td>
+                  <td class="organizers-cell">{{ meeting.organizers.all|join:", " }} </td>
                 </tr>
               {% endfor %}
 

@@ -208,6 +208,11 @@ transition: all 1s ease-out;    /* Gap */
   padding-right: 20px;
 }
 
+
+.organizers-cell {
+  font-size: .75em;
+}
+
 .members-header {
   display: block;
   margin: 10px auto 10px auto;
@@ -337,6 +342,13 @@ transition: all 1s ease-out;    /* Gap */
   grid-row: 3;
   /* margin-right: 20px !important; */
 }
+
+.tenth-member {
+  grid-column: 1 / 3;
+  grid-row: 4;
+}
+
+
 
 #general-body-members-table {
   margin-bottom: 80px;

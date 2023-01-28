@@ -27,12 +27,7 @@ TIERS_DATA = [
     ]
 
 
-def get_curr_semester():
-    # THIS MUST BE UPDATED TO THE CURRENT SEMESTER
-    # Whatever semester this returns is the one for which points are calculated 
-    CURR_PART_OF_TERM = "Fall"
-    CURR_YEAR = '2022'
-    return Semester.objects.get(part_of_term=CURR_PART_OF_TERM, year=CURR_YEAR)
+
 
 class Semester(models.Model):
     ''' Model to represent a semester '''
@@ -203,6 +198,15 @@ class SemesterMembershipStorage(models.Model):
 
     def __str__(self):
         return '{}, {}'.format(self.user.email, str(self.semester))
+
+def get_curr_semester():
+    # THIS MUST BE UPDATED TO THE CURRENT SEMESTER
+    # Whatever semester this returns is the one for which points are calculated 
+    CURR_PART_OF_TERM = "Spring"
+    CURR_YEAR = '2023'
+    return Semester.objects.get(part_of_term=CURR_PART_OF_TERM, year=CURR_YEAR)
+
+CURR_SEMESTER = get_curr_semester()
 
 
 
