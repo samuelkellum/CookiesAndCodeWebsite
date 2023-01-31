@@ -10,7 +10,7 @@ import uuid
 EVENT_POINTS = 10 # points attained for attending an event
 MEETING_POINTS = 5 # points attained for attending a meeting
 TIER_STANDARDS = {
-        'Platinum': 85,
+        'Platinum': 80,
         'Gold': 60,
         'Silver': 45,
         'Bronze': 30,
@@ -19,7 +19,7 @@ TIER_STANDARDS = {
     } 
 
 TIERS_DATA = [
-        {'name': 'Platinum', 'points': 85, 'description': open('main/platinum.txt', 'r+').read()},
+        {'name': 'Platinum', 'points': 80, 'description': open('main/platinum.txt', 'r+').read()},
         {'name': 'Gold', 'points': 60, 'description': open('main/gold.txt', 'r+').read()},
         {'name': 'Silver', 'points': 45, 'description': open('main/silver.txt', 'r+').read()},
         {'name': 'Bronze', 'points': 30, 'description': open('main/bronze.txt', 'r+').read()},
