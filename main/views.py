@@ -43,8 +43,8 @@ def profile(request):
     # in which case, user.event_set.all() gives error
     try:
         context = {
-            'user_events': user.event_set.all(),
-            'user_meetings': user.meeting_set.all(),
+            'user_events': user.event_set.filter(semester=CURR_SEMESTER).order_by('date_time'),
+            'user_meetings': user.meeting_set.filter(semester=CURR_SEMESTER).order_by('date_time'),
             }
     except:
         context = {}

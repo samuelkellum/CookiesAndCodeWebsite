@@ -42,7 +42,7 @@ def run():
 
 
 	# EVENTS
-	'''
+	
 
 	semester_event_folder_id = semester_to_event_meeting_id[curr_semester_str + '_event']
 
@@ -139,9 +139,7 @@ def run():
 			print("Attendance spreadsheet for this event does not yet exist")
 		print("DONE\n")
 
-
-	'''
-
+	
 
 	# MEETINGS
 	
@@ -152,7 +150,7 @@ def run():
 	fileList = drive.ListFile({'q': "'{}' in parents and trashed=false".format(semester_meeting_folder_id)}).GetList()
 	meetings_dict = dict()
 	# sleep for a couple of minutes to get rid of quota error
-	#time.sleep(120)
+	time.sleep(120)
 	# iterate over all folders in "meetings" Folder
 	for file1 in fileList:
 		print('title: %s, id: %s' % (file1['title'], file1['id']))
