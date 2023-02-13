@@ -36,7 +36,7 @@
               {% for event in semester_events %}
                 <tr>
                   <th>{{ event.name }}</th>
-                  <td>{{ event.date_time|date:"Y-m-d" }} </td>
+                  <td>{{ event.date_time|date:"Y-m-d"}} {{event.date_time|time:"h:ia" }} </td>
                   <td>{{ event.location }} </td>
                   <td class="organizers-cell">{{ event.organizers.all|join:", " }} </td>
                 </tr>
@@ -67,7 +67,7 @@
               {% for meeting in semester_meetings %}
                 <tr>
                   
-                  <td>{{ meeting.date_time|date:"Y-m-d" }} </td>
+                  <td>{{ meeting.date_time|date:"Y-m-d" }} {{meeting.date_time|time:"h:ia" }}</td>
                   <td>{{ meeting.location }} </td>
                   <td class="organizers-cell">{{ meeting.organizers.all|join:", " }} </td>
                 </tr>

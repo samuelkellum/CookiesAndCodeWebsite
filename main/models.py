@@ -187,6 +187,9 @@ class Meeting(models.Model):
 
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE, blank=True, null=True)
 
+    def __str__(self):
+        return "{} Meeting".format(self.date_time)
+
 
 
 class SemesterMembershipStorage(models.Model):
