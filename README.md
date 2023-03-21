@@ -31,7 +31,7 @@ This website was built to economize the acquisition of new members and increase 
 4. Create a virtual environment with `python3 -m venv env`
 5. Start environment with `source env/bin/activate`
 6. Install all required packages for the project with `pip install -r requirements.txt`
-7. In `CookiesAndCodeWebsite/settings.py` add your local database to the DATABASES dictionary following the following same pattern as the 'bk_local' entry in there. Give the new entry a key (databaseKEY) and be sure to replace ‘NAME,’ ‘USER,’ and ‘PASSWORD’ with whatever you set your databaseName, newUser, and password as in “Setting up PostgresSQL” ('ENGINE' should be 'django.db.backends.postgresql_psycopg2', 'HOST' should be 'localhost', and 'PORT' should be '5432'.
+7. In `CookiesAndCodeWebsite/settings.py` add your local database to the DATABASES dictionary following the following same pattern as the 'bk_local' entry in there. Give the new entry a key (databaseKEY) and be sure to replace ‘NAME,’ ‘USER,’ and ‘PASSWORD’ with whatever you set your databaseName, newUser, and password as in “Setting up PostgresSQL” ('ENGINE' should be 'django.db.backends.postgresql_psycopg2', 'HOST' should be 'localhost', and 'PORT' should be '5432').
 8. In the terminal, set the environment variable for the database with `export DJANGO_DATABASE=’databaseKEY’`
 9. Populate your local database. 
     1. In the terminal, make and apply the migrations in main/models.py with `python3 manage.py makemigrations` then `python3 manage.py migrate`
