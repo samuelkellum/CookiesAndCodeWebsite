@@ -9,6 +9,7 @@ from datetime import datetime
 from django.utils.dateparse import parse_date
 from main.models import CustomUser, Event, Meeting, Semester
 import time
+import re
 
 def run():
 
@@ -110,10 +111,13 @@ def run():
 		# it's possible that an Event object with google_drive_folder_id=[id] has already been created when
 		# "Event" folder was "Event 1"; it might have since changed to "Learn to Hack", in which case we only want to 
 		# update that Event object, not create an entire new one
+
 		event, created = Event.objects.update_or_create(
 			google_drive_folder_id=event_folder_id, semester=curr_semester,
 			defaults={'name': event_dict["event_name"], 'location': location, 'date_time': date_time}
 			)
+		print("Event was created: {}".format(created))
+		print("EVENT POINTS: {}".format(event.points))
 
 		event.organizers.clear() # somebody who is not an organizer now may have been listed as one before
 		for email in event_info_df['Organizers']:
@@ -126,7 +130,7 @@ def run():
 
 			attendance_df = event_dict['event_attendance_spread_sheet'].sheets[0].to_frame()
 			event.attendees.clear() 
-			for email in attendance_df["Tulane Email"]:
+			for email in attendance_df.iloc[:, attendance_df.columns.str.contains('email', flags=re.IGNORECASE).tolist().index(True)]:
 				print(email)
 				try:
 					user = CustomUser.objects.get(email=email.lower())
@@ -143,7 +147,7 @@ def run():
 
 	# MEETINGS
 	
-
+	
 	semester_meeting_folder_id = semester_to_event_meeting_id[curr_semester_str + '_meeting']
 	# List files in Google Drive
 	# '1oVCHPpSL6SaqZixTBA29N6oJc8cNemj9' is '/"Fall 2022"/Meetings' Folder in Google Drive
@@ -232,7 +236,7 @@ def run():
 		try:
 			attendance_df = meeting_dict['meeting_attendance_spread_sheet'].sheets[0].to_frame()
 			meeting.attendees.clear() 
-			for email in attendance_df["Tulane Email"]:
+			for email in attendance_df.iloc[:, attendance_df.columns.str.contains('email', flags=re.IGNORECASE).tolist().index(True)]:
 				print(email)
 				try:
 					user = CustomUser.objects.get(email=email.lower())
@@ -245,6 +249,7 @@ def run():
 			print("Attendance spreadsheet for this meeting does not yet exist")
 	
 		print("DONE\n")
+	
 
 	'''
 
