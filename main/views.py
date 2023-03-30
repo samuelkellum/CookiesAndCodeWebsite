@@ -2,7 +2,13 @@ from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import render, redirect
-from .models import CustomUser, Event, Meeting, Semester, EVENT_POINTS, MEETING_POINTS, TIERS_DATA, CURR_SEMESTER
+from .models import CustomUser, Event, Meeting, Semester, EVENT_POINTS, MEETING_POINTS, TIERS_DATA, get_curr_semester
+
+try:
+    CURR_SEMESTER = get_curr_semester()
+except:
+    print("This will print first time you migrate. The above is in a try because Semester object doesn't exist yet. This is okay.")
+
 
 
 # Create your views here.

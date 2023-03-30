@@ -13,7 +13,7 @@ set +a
 rm *.dump *.dump.* # delete all previous dump files
 heroku pg:backups:capture -a cookies-and-code-site # create a backup of the Heroku remote database
 heroku pg:backups:download -a cookies-and-code-site # download the backup
-pg_restore --verbose --clean --no-acl --no-owner -h localhost -U bennett -d candctu latest.dump	
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -U $USER -d $DATABASE latest.dump	
 
 
 # Run scripts to add new users and update events
@@ -23,7 +23,7 @@ python manage.py runscript google_test # update events
 
 # Overwrite remote heroku database with contents of local one
 # -----------------------------------------------------------
-pg_dump -Fc --no-acl --no-owner -h localhost -U bennett candctu > mydb1.dump # dump local database to compressed .dump file
+pg_dump -Fc --no-acl --no-owner -h localhost -U $USER $DATABASE > mydb1.dump # dump local database to compressed .dump file
 aws s3api put-object --bucket cookies-and-code-s3-bucket --key mydb1.dump --body mydb1.dump # hard-coded bucket name is okay as stated here: https://security.stackexchange.com/questions/214499/s3-bucket-name-obscurity-as-security
 SIGNED_URL=$(aws s3 presign s3://cookies-and-code-s3-bucket/mydb1.dump)
 heroku pg:backups:restore $SIGNED_URL DATABASE_URL --app cookies-and-code-site --confirm cookies-and-code-site

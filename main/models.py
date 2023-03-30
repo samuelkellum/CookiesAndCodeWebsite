@@ -209,7 +209,7 @@ def get_curr_semester():
     CURR_YEAR = '2023'
     return Semester.objects.get(part_of_term=CURR_PART_OF_TERM, year=CURR_YEAR)
 
-CURR_SEMESTER = get_curr_semester()
+
 
 
 
