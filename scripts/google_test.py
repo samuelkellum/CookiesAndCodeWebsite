@@ -129,7 +129,7 @@ def run():
 		try:
 
 			attendance_df = event_dict['event_attendance_spread_sheet'].sheets[0].to_frame()
-			event.attendees.clear() 
+			#event.attendees.clear() 
 			for email in attendance_df.iloc[:, attendance_df.columns.str.contains('email', flags=re.IGNORECASE).tolist().index(True)]:
 				print(email)
 				try:
@@ -235,7 +235,7 @@ def run():
 
 		try:
 			attendance_df = meeting_dict['meeting_attendance_spread_sheet'].sheets[0].to_frame()
-			meeting.attendees.clear() 
+			#meeting.attendees.clear() 
 			for email in attendance_df.iloc[:, attendance_df.columns.str.contains('email', flags=re.IGNORECASE).tolist().index(True)]:
 				print(email)
 				try:
