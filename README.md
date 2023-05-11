@@ -7,7 +7,7 @@ This website was built to economize the acquisition of new members and increase 
 ### Setting up PostgreSQL and Project Local Database: ###
 
 1. Open up your terminal and update brew with `brew update`
-2. Install postgresql with `brew install postgresql`
+2. Install postgresql with `brew install postgresql` (you may need to do `brew install postgresql@14`)
 3. Start postgres with `brew services start postgresql`
 4. Open psql shell with `psql postgres`
     1. You may have to do `sudo -u postgres psql` (if you originally installed postgresql from the browser, you probably created a root password, and you might need to enter that here)
