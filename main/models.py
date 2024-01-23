@@ -205,12 +205,6 @@ class SemesterMembershipStorage(models.Model):
 def get_curr_semester():
     # THIS MUST BE UPDATED TO THE CURRENT SEMESTER
     # Whatever semester this returns is the one for which points are calculated 
-    CURR_PART_OF_TERM = "Spring"
+    CURR_PART_OF_TERM = 'Spring'
     CURR_YEAR = '2024'
     return Semester.objects.get(part_of_term=CURR_PART_OF_TERM, year=CURR_YEAR)
-
-
-
-
-
-
